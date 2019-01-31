@@ -51,18 +51,19 @@ public class ReadImage {
                 newFile += "\\" + items[i].getName();
                 BufferedImage originalImage = ImageIO.read(new File(file));    //using the path
                 int type = originalImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+                System.out.println("Croping image   " + items[i].getName());
                 if (items[i].getName().endsWith("jpg")) {
-                	System.out.println("Resizing image name =  " + items[i].getName());
+                	
                     BufferedImage resizeImageJpg = resizeImageHelper(originalImage, type);
                     cropTheImage(resizeImageJpg, newFile, "jpg");
                     //ImageIO.write(resizeImageJpg, "jpg", new File(newFile));
                 } else if (items[i].getName().endsWith("jpeg")) {
-                	System.out.println("Resizing image name =  " + items[i].getName());
+                	
                     BufferedImage resizeImageJpeg = resizeImageHelper(originalImage, type);
                     cropTheImage(resizeImageJpeg, newFile, "jpeg");
                     //ImageIO.write(resizeImageJpeg, "jpeg", new File(newFile));
                 } else {
-                	System.out.println("Resizing image name =  " + items[i].getName());
+                	
                     BufferedImage resizeImagePng = resizeImageHelper(originalImage, type);
                     cropTheImage(resizeImagePng, newFile, "png");
                     //ImageIO.write(resizeImagePng, "png", new File(newFile));
@@ -74,10 +75,10 @@ public class ReadImage {
     }
 
     private static void cropTheImage(BufferedImage resizeImagePng, String newFile, String extension) throws IOException {
-		//resizeImagePng.getRGB()
+		
     	
     	
-    	System.out.println("Created new buffer Image of size 300*300");
+    	//System.out.println("Created new buffer Image of size 300*300");
     	for (int i=0; i<4; i++) {
     		for (int j=0; j<3; j++) {
     			BufferedImage bi =  new BufferedImage(300, 300, resizeImagePng.getType());
